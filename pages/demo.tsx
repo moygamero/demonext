@@ -7,8 +7,16 @@ interface persona {
     Nombre: string;
     Apellido: string;
     Correo: string;
+    Foto?: {
+      data: {
+        attributes: {
+          url: string;
+        };
+      };
+    };
   };
 }
+
 
 function Demo() {
   const [personas, setpersonas] = useState<persona[]>([]);
@@ -46,6 +54,14 @@ function Demo() {
                 <h2 className='text-xl font-semibold'>{persona.attributes.Nombre}</h2>
                 <p className='mt-2 text-gray-600'>{persona.attributes.Apellido}</p>
                 <p className='mt-1 text-sm text-gray-500'>Correo: {persona.attributes.Correo}</p>
+                {/* Mostrar la imagen si está disponible */}
+                {persona.attributes.Foto && persona.attributes.Foto.data && (
+                  <img
+                    src={`URL_BASE/${persona.attributes.Foto.data.attributes.url}`}
+                    alt={`${persona.attributes.Nombre} ${persona.attributes.Apellido}`}
+                    className='mt-4'
+                  />
+                )}
               </li>
             ))}
           </ul>
@@ -53,6 +69,7 @@ function Demo() {
       )}
     </div>
   );
+  
 }
 
 export default Demo;
