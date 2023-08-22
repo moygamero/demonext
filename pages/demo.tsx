@@ -56,8 +56,9 @@ function Demo() {
                 <p className='mt-1 text-sm text-gray-500'>Correo: {persona.attributes.Correo}</p>
                 {/* Mostrar la imagen si está disponible */}
                 {persona.attributes.Foto && persona.attributes.Foto.data && (
-                  <img
-                    src={`URL_BASE/${persona.attributes.Foto.data.attributes.url}`}
+                  <img  
+                    /*src={`http://147.182.243.95:1337${persona.attributes.Foto.data.attributes.url}`}*/
+                    src={`http://147.182.243.95:1337${persona.attributes.Foto.data.attributes.formats.small.url}`}
                     alt={`${persona.attributes.Nombre} ${persona.attributes.Apellido}`}
                     className='mt-4'
                   />
