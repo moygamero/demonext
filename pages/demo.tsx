@@ -47,7 +47,7 @@ function Demo() {
 
   return (
     <div className="h-screen p-8">
-      <h1 className="text-3xl font-bold mb-4">Recopilar Datos de Strapi</h1>
+      <h1 className="text-3xl font-bold mb-4">Recopilando Datos de Strapi</h1>
       {loading ? (
         <p>Cargando...</p>
       ) : error ? (
