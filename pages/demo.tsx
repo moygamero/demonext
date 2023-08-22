@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getPersonas } from './api/strapi';
-
+import Image from 'next/image';
 interface persona {
   id: number;
   attributes: {
@@ -9,13 +9,20 @@ interface persona {
     Correo: string;
     Foto?: {
       data: {
-        attributes: {
-          url: string;
+        formats: {
+          small: {
+            url: string;
+          };
+          medium: {
+            url: string;
+          };
+          // Agrega otros formatos aquí si es necesario
         };
       };
     };
   };
 }
+
 
 
 function Demo() {
@@ -56,11 +63,11 @@ function Demo() {
                 <p className='mt-1 text-sm text-gray-500'>Correo: {persona.attributes.Correo}</p>
                 {/* Mostrar la imagen si está disponible */}
                 {persona.attributes.Foto && persona.attributes.Foto.data && (
-                  <img  
-                    /*src={`http://147.182.243.95:1337${persona.attributes.Foto.data.attributes.url}`}*/
+                  <Image  
                     src={`http://147.182.243.95:1337${persona.attributes.Foto.data.attributes.formats.small.url}`}
                     alt={`${persona.attributes.Nombre} ${persona.attributes.Apellido}`}
-                    className='mt-4'
+                    width={300}
+                    height={200}
                   />
                 )}
               </li>
