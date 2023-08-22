@@ -38,6 +38,7 @@ export default function Slider() {
 
   return (
     <>
+    
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
